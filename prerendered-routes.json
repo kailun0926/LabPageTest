@@ -1,0 +1,12 @@
+{
+  "routes": {
+    "/LabPageTest": {},
+    "/LabPageTest/home": {},
+    "/LabPageTest/professor": {},
+    "/LabPageTest/research": {},
+    "/LabPageTest/research/collab": {},
+    "/LabPageTest/research/nstc": {},
+    "/LabPageTest/research/publication": {},
+    "/LabPageTest/team": {}
+  }
+}
