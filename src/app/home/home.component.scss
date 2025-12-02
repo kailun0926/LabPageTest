@@ -1,0 +1,165 @@
+/* src/app/home/home.scss */
+
+/* [修正]
+  :host (app-home)
+  1. 使用 flex-grow: 1 填滿 main-content-panel
+  2. 設為 flex 容器來管理 .full-height-container
+  3. Home 頁面本身不滾動
+*/
+:host {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* [修正]
+  .full-height-container
+  1. 使用 flex-grow: 1 填滿 :host
+  2. 設為 flex 容器來管理 .row
+*/
+.full-height-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* [修正]
+  Bootstrap 的 .row
+  1. 使用 flex-grow: 1 填滿 .full-height-container
+*/
+.row.h-100 {
+  flex-grow: 1; 
+}
+
+/* --- 左側欄位 (保持不變) --- */
+.intro-column {
+  background-color: #f8f9fa; 
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+}
+.intro-column h5 {
+  color: #212929; 
+  font-weight: 600;
+}
+.intro-column h6 {
+  color: #212929; 
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.title-accent-line {
+  width: 80px;
+  height: 4px;
+  background-color: #09A2C8;
+  color: #09A2C8;
+  border: none;
+  opacity: 1;
+  margin: 1.5rem auto; 
+}
+.intro-paragraph {
+  max-width: 100%;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* --- 右側欄位 (關鍵修正) --- */
+
+.carousel-column {
+  background-color: #ffffff;
+  overflow: hidden; 
+  
+  /* 設為 flex 容器，讓 ngb-carousel 填滿 */
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-column ngb-carousel {
+  /* 讓 ngb-carousel 填滿 .carousel-column */
+  flex-grow: 1;
+  
+  /* [新增] 讓它能管理 100% 高度的子代 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* [關鍵修正]
+  使用 ::ng-deep 穿透 ng-bootstrap 的樣式
+  強制內部容器 100% 高度
+*/
+:host ::ng-deep .carousel-column {
+
+  /* ngb-carousel 的主要內部容器 */
+  .carousel-inner {
+    height: 100%;
+  }
+  
+  /* ngb-carousel 的每一個 slide item */
+  .carousel-item {
+    height: 100%;
+  }
+  
+  /* 我們 <ng-template> 產生的 wrapper div */
+  ngb-slide > div {
+    height: 100%;
+    
+    /* [重要] 設定為絕對定位的父層 */
+    position: relative; 
+  }
+}
+
+/* [關鍵修正]
+  將圖片改為絕對定位 (position: absolute)
+  這會讓它完全忽視自己的原始尺寸
+*/
+.carousel-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持比例並裁切填滿 */
+}
+
+/* [修正]
+  輪播標題 (Caption) 樣式 - 方案 A：膠囊樣式
+*/
+.carousel-caption {
+  z-index: 10;
+  position: absolute;
+  bottom: 1.5rem;  /* 距離底部 1.5rem (可自行調整) */
+
+  /* [關鍵修改] 
+    改用 left: 50% 和 transform: translateX(-50%)
+    使其水平居中，且寬度由內容自動撐開
+  */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* [移除] 
+    移除 left: 10% 和 right: 10%
+  */
+  /* left: 10%; */
+  /* right: 10%; */
+  
+  /* [修改] 
+    改用 padding，讓背景貼合文字
+  */
+  padding: 0.5rem 1.25rem; /* 上下 0.5rem, 左右 1.25rem */
+  
+  background-color: rgba(0, 0, 0, 0.5); /* 可稍微加深背景 */
+  border-radius: 2rem; /* 改為圓角膠囊狀 */
+  
+  /* [新增] 
+    確保內部的 h3 樣式正確
+  */
+}
+
+.carousel-caption h3 {
+  color: #fff;
+  font-size: 1rem;    /* 調整字體大小 (可選) */
+  margin-bottom: 0;   /* 移除 h3 預設的 margin */
+}

@@ -1,0 +1,83 @@
+/* src/app/research/research.component.scss */
+
+:host {
+  /* [關鍵] 讓此元件自己啟用「垂直」滾動 
+    (auto 表示內容夠多時才顯示滾動條)
+  */
+  overflow-y: auto;
+  
+  /* [關鍵] 讓此元件填滿 .main-content-panel 的空間 */
+  flex-grow: 1;
+
+  /* [推薦] 
+    為您的頁面內容加上一些內距 (padding)，
+    這樣內容才不會完全貼齊 Header 和 Footer。
+    您可以自行調整 2rem (32px) 這個值。
+  */
+  display: block; /* 確保 padding 生效 */
+  padding: 0rem;
+}
+
+/* 1. [新配色] 介紹區塊 
+  (使用白色背景)
+*/
+.project-header-block {
+  background-color: #f8f9fa;
+}
+
+/* 藝術感短線 (與 Team 頁面一致) */
+.title-accent-line {
+  width: 80px;
+  height: 4px;
+  background-color: #09A2C8; /* 品牌色 */
+  border: none;
+  opacity: 1;
+  margin: 1.5rem auto;
+}
+
+/* 介紹文字 (與 Team 頁面一致) */
+.intro-paragraph {
+  max-width: 700px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* 2. [新配色] 卡片區域
+  (使用淺灰色背景，與 Team 頁面反轉)
+*/
+.projects-column {
+  background-color: #ffffff; /* Bootstrap 預設的 .bg-light 顏色 */
+}
+
+/* 3. 專案卡片樣式 (與 Professor 頁面一致) */
+.project-card {
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-card .card-title {
+  font-weight: 600;
+  color: #212529;
+}
+
+.project-card .card-body {
+  padding: 1.5rem; /* 增加留白 */
+}
+
+/* 專案卡片圖片 */
+.img-project { 
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  display: block; /* 讓 margin: auto 生效 */
+  margin: 1rem auto 1rem auto; /* 上邊距 1.5rem，左右自動置中 */
+  
+  /* (可選) 加一點圓角讓正方形不那麼銳利，或設為 50% 變成圓形 */
+  border-radius: 0.5rem;
+}

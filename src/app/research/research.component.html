@@ -1,0 +1,60 @@
+<div [class]="'project-header-block text-center py-5'">
+  <div [class]="'container'">
+    <h2>Our Research Projects</h2>
+    
+    <hr [class]="'title-accent-line'">
+    
+    <p [class]="'text-muted mx-auto intro-paragraph'">
+      我們目前專注於尖端 AI 技術，如：LLM、AI Agent ...，與資料庫及前端網頁結合，以應對業界近年來的需求。
+    </p>
+  </div>
+</div>
+
+<div [class]="'projects-column py-5'">
+  <div [class]="'container'">
+    <div [class]="'row'">
+      
+      @for (project of projects(); track project.id) {
+        
+        <div [class]="'col-12 mb-4'">
+          <div [class]="'card project-card'">
+            
+            <div [class]="'row g-0'">
+              
+              <div [class]="'col-md-3'">
+                <img [ngSrc]="project.image" 
+                     [class]="'img-fluid rounded-start img-project'" 
+                     width="400" 
+                     height="300" 
+                     alt="{{project.title}}">
+              </div>
+
+              <div [class]="'col-md-9'">
+                <div [class]="'card-body d-flex flex-column h-100 p-4'">
+                  
+                  <div [class]="'d-flex justify-content-between align-items-start'">
+                    <h5 [class]="'card-title mb-1'">{{project.title}}</h5>
+                    <span [class]="'badge rounded-pill ' + (project.status === 'Ongoing' ? 'text-bg-success' : 'text-bg-secondary')">
+                      {{project.status}}
+                    </span>
+                  </div>
+
+                  <p [class]="'card-text text-muted mt-3 flex-grow-1'">
+                    {{project.description}}
+                  </p>
+
+                  <!--div [class]="'mt-auto text-end'">
+                    <a [class]="'btn btn-outline-primary btn-sm'">
+                      Read More
+                    </a>
+                  </div-->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

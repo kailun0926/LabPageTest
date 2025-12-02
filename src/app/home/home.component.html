@@ -1,0 +1,40 @@
+<div class="full-height-container">
+  
+  <div class="row h-100 g-0">
+
+    <div class="col-lg-3 intro-column">
+      
+      <div class="intro-content-wrapper">
+        <h5>先進製程與設備智能輔助實驗室</h5>
+        <h6>Advanced Process Control and Intelligent Equipment Laboratory</h6>
+        <hr [class]="'title-accent-line'">
+        <p [class]="'text-muted mx-auto intro-paragraph'">
+          本實驗室整合了製程控制理論、智能設備設計與 AI 技術，致力於解決現代製造業對高精度、高效率的挑戰。
+          我們透過與業界的緊密合作，將數位雙生與流程優化等研究成果導入真實場域，
+          旨在成為先進控制與智慧製造的頂尖創新中心。
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-9 carousel-column">
+      
+      <ngb-carousel [showNavigationIndicators]="false">
+        @for (picture of labpictures(); track picture.id) {
+          <ng-template ngbSlide>
+            <img [ngSrc]="picture.path" 
+                 [class]="'carousel-image'" 
+                 width="1600" 
+                 height="900" 
+                 [priority]="picture.id === 1"
+                 alt="{{ picture.context }}">
+            <div [class]="'carousel-caption'">
+              <h3>{{ picture.context }}</h3>
+            </div>
+          </ng-template>
+        }
+      </ngb-carousel>
+
+    </div>
+
+  </div>
+</div>

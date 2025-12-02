@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@use "primeicons/primeicons.css";
+@use "tailwindcss";
+/* Importing Bootstrap SCSS file. */
+@use 'bootstrap/scss/bootstrap';
+
+
+/* src/styles.scss */
+
+/* [關鍵修正]
+  移除 body 和 html 的預設邊界和內距
+*/
+html, body {
+  margin: 0;
+  padding: 0;
+  
+  /* [推薦] 
+    讓 html 和 body 也佔滿 100% 高度
+  */
+  height: 100%;
+}
+
+/* ... 您的其他全域樣式 (例如 @import 'bootstrap') ... */

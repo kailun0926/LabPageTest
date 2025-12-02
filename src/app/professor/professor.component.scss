@@ -1,0 +1,125 @@
+/* src/app/professor/professor.component.scss */
+
+:host {
+  /* [關鍵] 讓此元件自己啟用「垂直」滾動 
+    (auto 表示內容夠多時才顯示滾動條)
+  */
+  overflow-y: auto;
+  
+  /* [關鍵] 讓此元件填滿 .main-content-panel 的空間 */
+  flex-grow: 1;
+
+  /* [推薦] 
+    為您的頁面內容加上一些內距 (padding)，
+    這樣內容才不會完全貼齊 Header 和 Footer。
+    您可以自行調整 2rem (32px) 這個值。
+  */
+  display: block; /* 確保 padding 生效 */
+  padding: 0rem;
+}
+
+/* 1. [修正] 確保 .row 填滿高度 */
+.row {
+  min-height: 90vh; /* 保持最小高度 */
+  background-color: #ffffff; /* 右側內容區的背景色 */
+}
+
+/* 2. [修正] .text-column 的新配色和排版 */
+.text-column {
+  background-color: #F4F9FB; /* [新配色] 極淺的藍色 */
+  
+  /* [排版] 增加內邊距，創造「留白」 */
+  padding: 2.5rem; 
+  
+  /* [修正] 移除舊的 ::before 偽元素相關樣式 */
+  position: static;
+  z-index: auto;
+}
+
+/* 3. 圖片樣式 (保持您要的置中和圓形) */
+.img-fixed {
+  height: 180px; 
+  width: 180px;  
+  object-fit: contain;
+  border-radius: 50%; 
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.intro-column img {
+  width: auto;       /* 關鍵：強制圖片填滿容器寬度 */
+  height: 350px;      /* 關鍵：讓高度自動縮放，保持原始比例 */
+  object-fit: cover; /* 確保圖片填滿 */
+  padding: 6px;
+  display: block;      /* 1. 將圖片轉為區塊元素 */
+  margin: 1rem auto;
+}
+
+/* 4. [新配色] 標題樣式 */
+h4 {
+  font-weight: 600; 
+  color: #212529; /* 深炭色 */
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+h6 {
+  color: #6c757d; /* 中灰色 */
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+/* 5. [新配色] 區塊標題 */
+.section-title {
+  color: #09A2C8; /* [品牌色] */
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 2px solid #dee2e6; /* 使用更淺的邊框 */
+  padding-bottom: 0.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* 6. [新配色] 列表內文 */
+.info-list {
+  list-style: none;
+  padding-left: 0.25rem;
+}
+
+.info-list li {
+  color: #495057; /* 中深灰色 */
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.info-list li p {
+  color: #6c757d; 
+  font-weight: 400;
+  margin-top: 0.25rem;
+}
+
+
+.intro-column {
+  padding: 2.5rem;
+}
+
+.intro-column h4 {
+  font-weight: 600;
+  margin: 0;
+  padding-left: 3px;
+  padding-bottom: 6px;
+  color: #212529;
+  font-family: 'Georgia';
+  font-size: x-large;
+}
+
+.intro-column h6 {
+  font-weight: 600;
+  margin: 3px;
+  color: #6c757d;
+  font-family: 'Georgia';
+  font-size: large;
+  text-align: justify
+}
+

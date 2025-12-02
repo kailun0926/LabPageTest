@@ -1,0 +1,128 @@
+<!--app.component.html-->
+<div [class]="'container-fluid text-white text-center header-banner sticky-top py-3'">
+  <div [class]="'row justify-content-md-center'">
+    <div [class]="'col-md-1 d-flex justify-content-center align-items-center'">
+      <button [class]="'btn btn-outline-secondary btn-open-sidebar'" (click)="open(offcanvasSidebar)">
+        ☰
+      </button>
+    </div>
+    <div class="col-md-11 d-flex">
+      <img ngSrc="assets/images/head-banner.png" 
+       [class]="'header-banner-img'" 
+       width="1920" 
+       height="120" 
+       priority="true" 
+       alt="Header Banner">
+    </div>
+  </div>
+</div>
+
+  <main [class]="'main-content-panel'">
+    <router-outlet (activate)="onOutletActivated($event)"/>
+  </main>
+  <footer class="footer-banner" style="background-color: #09A2C8; padding: 0pt;">
+  <div class="container-fluid text-white text-center py-3" style="background-color: #09A2C8; padding: 0pt;">
+      <div class="row">
+        <div class="col">
+          <p class="mb-0 text-end pe-4" style="font-size: 0.75rem;">
+            235307 新北市中和區工專路111號 臺灣科技大學 華夏校區教學大樓2樓C219 
+          </p>
+          <p class="mb-0 text-end pe-4" style="font-size: 0.75rem;">
+            General Education Building 2F C2, No. 111, Gongzhuan Rd., Zhonghe Dist., New Taipei City 235307, Taiwan (R.O.C.)
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <ng-template #offcanvasSidebar let-offcanvas>
+  <div [class]="'offcanvas-header'">
+    <h5 [class]="'offcanvas-title'">
+      <img ngSrc="assets/images/head-banner-removebg.png" 
+           [class]="'sidebar-logo'" 
+           alt="Logo"
+           width="150"
+           height="50">
+    </h5>
+    <button type="button" [class]="'btn-close'" aria-label="Close" 
+            (click)="offcanvas.dismiss()"></button>
+  </div>
+
+  <div [class]="'offcanvas-body'">
+    <ul [class]="'nav nav-pills flex-column'">
+      <li [class]="'nav-item'">
+        <a [class]="'nav-link'" routerLink="/home" routerLinkActive="active" (click)="offcanvas.dismiss()">
+          <i [class]="'bi bi-house-door-fill'"></i> HOME
+        </a>
+      </li>
+      <li [class]="'nav-item'">
+        <a [class]="'nav-link'" routerLink="/professor" routerLinkActive="active" (click)="offcanvas.dismiss()">
+          <i [class]="'bi bi-person-fill'"></i> PROFESSOR
+        </a>
+      </li>
+      <li [class]="'nav-item'">
+        <a [class]="'nav-link'" routerLink="/team" routerLinkActive="active" (click)="offcanvas.dismiss()">
+          <i [class]="'bi bi-people-fill'"></i> TEAM
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}">
+        
+        <a [class]="'nav-link d-flex justify-content-between align-items-center'" 
+           (click)="isResearchCollapsed.set(!isResearchCollapsed())"
+           [attr.aria-expanded]="!isResearchCollapsed()"
+           [class.active]="rla.isActive" 
+           routerLinkActive="active" 
+           [routerLinkActiveOptions]="{exact: false}"
+           #rla="routerLinkActive">
+          
+          <span>
+            <i [class]="'bi bi-archive-fill'"></i> RESEARCH
+          </span>
+          
+          <i class="bi bi-chevron-down small"></i>
+        </a>
+        
+        <div [ngbCollapse]="isResearchCollapsed()">
+          <ul class="nav nav-pills flex-column">
+            
+            <li class="nav-item">
+              <a [class]="'nav-link sub-nav-link'" 
+                 routerLink="/research"  
+                 routerLinkActive="active" 
+                 [routerLinkActiveOptions]="{exact: true}"
+                 (click)="offcanvas.dismiss()">
+                 Overview
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a [class]="'nav-link sub-nav-link'" 
+                 routerLink="/research/nstc"  
+                 routerLinkActive="active" 
+                 (click)="offcanvas.dismiss()">
+                 National Science and Technology Council (NSTC) Project
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [class]="'nav-link sub-nav-link'" 
+                 routerLink="/research/collab" 
+                 routerLinkActive="active" 
+                 (click)="offcanvas.dismiss()">
+                 Industry-Academia / Academic Collaboration
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [class]="'nav-link sub-nav-link'" 
+                 routerLink="/research/publication" 
+                 routerLinkActive="active" 
+                 (click)="offcanvas.dismiss()">
+                 PUBLICATIONS
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+

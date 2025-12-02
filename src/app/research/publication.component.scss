@@ -1,0 +1,105 @@
+/* src/app/professor/professor.component.scss */
+
+:host {
+  /* [關鍵] 讓此元件自己啟用「垂直」滾動 
+    (auto 表示內容夠多時才顯示滾動條)
+  */
+  overflow-y: auto;
+  
+  /* [關鍵] 讓此元件填滿 .main-content-panel 的空間 */
+  flex-grow: 1;
+
+  /* [推薦] 
+    為您的頁面內容加上一些內距 (padding)，
+    這樣內容才不會完全貼齊 Header 和 Footer。
+    您可以自行調整 2rem (32px) 這個值。
+  */
+  display: block; /* 確保 padding 生效 */
+  padding: 0rem;
+}
+
+/* 1. [修正] 確保 .row 填滿高度 */
+.row {
+  min-height: 90vh; /* 保持最小高度 */
+  background-color: #ffffff; /* 右側內容區的背景色 */
+}
+
+.project-header-block {
+  background-color: #f8f9fa;
+}
+
+/* 藝術感短線 (與 Team 頁面一致) */
+.title-accent-line {
+  width: 80px;
+  height: 4px;
+  background-color: #09A2C8; /* 品牌色 */
+  border: none;
+  opacity: 1;
+  margin: 1.5rem auto;
+}
+
+/* 7. [新配色] 論文卡片區 */
+.publications-column {
+  padding: 2.5rem;
+}
+
+.publications-column h3 {
+  font-weight: 600;
+  color: #212529;
+}
+
+/* ... 您的 .paper-card 相關樣式 ... */
+
+.paper-card-link {
+  display: block; /* 讓 <a> 填滿欄位 */
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 1rem; /* 卡片之間的間距 */
+}
+
+.paper-card {
+  border: none; /* [設計重點] 移除邊框 */
+  
+  /* [設計重點] 使用柔和的陰影來取代邊框 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+  
+  /* [設計重點] 保持您原有的 hover 效果 */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* [設計重點] 增強 hover 效果 */
+.paper-card-link:hover .paper-card {
+  transform: translateY(-5px); /* 向上浮動 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* 陰影加深 */
+}
+
+/* [設計重點] 增加卡片內部的「留白」 */
+.paper-card .card-body {
+  padding: 1.5rem; /* 增加內邊距 */
+  
+  /* 移除您之前為了對齊 icon 的樣式 */
+  // display: flex; 
+  // align-items: center;
+}
+
+/* [設計重點] 強化標題的視覺層次 */
+.paper-card .card-title {
+  font-weight: 600; /* 讓標題更粗 */
+  font-size: 1.1rem;
+  color: #212529; /* 使用更深的顏色 */
+  transition: color 0.2s ease-in-out;
+}
+
+.paper-card-link:hover .card-title {
+  color: #0d6efd; /* 保持 hover 時的顏色變化 */
+}
+
+.paper-card .card-subtitle {
+  font-size: 0.9rem;
+}
+
+/* Ensure the image fills the column's height */
+.img-paper {
+  max-width: 100px;
+  object-fit: cover;
+}

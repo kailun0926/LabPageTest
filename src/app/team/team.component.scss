@@ -1,0 +1,107 @@
+/* src/app/team/team.component.scss */
+
+:host {
+  /* [關鍵] 讓此元件自己啟用「垂直」滾動 
+    (auto 表示內容夠多時才顯示滾動條)
+  */
+  overflow-y: auto;
+  
+  /* [關鍵] 讓此元件填滿 .main-content-panel 的空間 */
+  flex-grow: 1;
+
+  /* [推薦] 
+    為您的頁面內容加上一些內距 (padding)，
+    這樣內容才不會完全貼齊 Header 和 Footer。
+    您可以自行調整 2rem (32px) 這個值。
+  */
+  display: block; /* 確保 padding 生效 */
+  padding: 0rem;
+}
+
+.row {
+  display: flex;
+  background-color: #ffffff;
+}
+
+.team-header-block {
+  background-color: #f8f9fa; /* Bootstrap 預設的 .bg-light 顏色 */
+}
+
+/* [新增] 
+  您在範例圖片中看到的「藝術感」短線
+*/
+.title-accent-line {
+  width: 80px; /* 短線寬度 */
+  height: 4px;  /* 短線粗細 */
+  
+  /* [配色] 使用您在 Professor 頁面定義的主題色 */
+  background-color: #09A2C8; 
+  color: #09A2C8;
+  
+  border: none;
+  opacity: 1;
+  margin: 1.5rem auto; /* 水平置中並增加上下間距 */
+}
+
+/* [新增] 
+  限制介紹文字的寬度，使其更易於閱讀
+*/
+.intro-paragraph {
+  max-width: 700px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+h2 {
+  font-weight: 600; 
+  color: #212529; /* 深炭色 */
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.members-column {
+  background-color: #ffffff;
+}
+
+.card-img-fixed {
+  height: 200px; /* Or any fixed height you want */
+  width: 200px;
+  object-fit: cover; 
+  display: block; /* 讓 margin: auto 生效 */
+  margin: 1.5rem auto 0 auto; /* 上邊距 1.5rem，左右自動置中 */
+  
+  /* (可選) 加一點圓角讓正方形不那麼銳利，或設為 50% 變成圓形 */
+  border-radius: 0.5rem;
+}
+
+.card-team {
+  border: none; /* [設計重點] 移除邊框 */
+  
+  /* [設計重點] 使用柔和的陰影來取代邊框 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  
+}
+
+
+/* [設計重點] 增加卡片內部的「留白」 */
+.card-team .card-body {
+  padding: 1.5rem; /* 增加內邊距 */
+
+}
+
+/* [設計重點] 強化標題的視覺層次 */
+.card-team .card-title {
+  font-weight: 600; /* 讓標題更粗 */
+  font-size: 1.1rem;
+  color: #212529; /* 使用更深的顏色 */
+  transition: color 0.2s ease-in-out;
+}
+
+.card-team .card-subtitle {
+  font-size: 0.9rem;
+}
+
+.research-interest {
+  font-size: 0.9rem;
+  color: #495057;
+}

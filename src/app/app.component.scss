@@ -1,0 +1,147 @@
+/* src/app/app.component.scss */
+
+:host {
+  /* [預設樣式] (適用於 Professor, Team 等頁面)
+     讓 app-root 表現為一個標準的區塊
+  */
+  display: block;
+}
+
+.main-content-panel {
+  /* [預設樣式] (適用於所有頁面)
+     仍然需要防止水平滾動條
+  */
+  width: 100%; 
+  overflow-x: hidden;
+  color: #212529; 
+}
+
+.footer-banner {
+  /* [預設樣式] (適用於所有頁面) */
+  overflow-x: hidden;
+}
+
+
+/* [關鍵] 
+   以下樣式「僅」當 :host 具有 .full-page-layout class 時
+   (即 isHomePage() 為 true) 才生效
+*/
+:host(.full-page-layout) {
+  /* 套用黏性頁腳佈局 */
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+
+  /* 我們需要 .main-content-panel 和 .footer-banner
+    在 .full-page-layout 內部的特定樣式
+  */
+  .main-content-panel {
+    flex-grow: 1; /* [首頁專用] 強制 main 填滿空間 */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-banner {
+    flex-shrink: 0; /* [首頁專用] 防止 footer 被壓縮 */
+  }
+}
+
+/* --- 以下樣式保持不變 --- 
+  (Header, Button, Sidebar 等樣式)
+*/
+.header-banner {
+  height: auto; 
+  background-color: #FFF; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); 
+  flex-shrink: 0; /* [注意] 這個 flex-shrink 只會在首頁生效 */
+}
+
+.header-banner-img {
+  width: auto; 
+  height: 60px; 
+  display: block; 
+}
+
+.btn-open-sidebar {
+  z-index: 1040;
+  font-size: 1.25rem;
+  border-color: rgba(128, 128, 128, 0.5);
+  color: black;
+  opacity: 0.8;
+  border-radius: 50%; 
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-open-sidebar:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+  color: black;
+  opacity: 1;
+}
+
+/* ... (您所有的 .sidebar-logo, .offcanvas-body, .nav-link, .sub-nav-link 等樣式) ... */
+/* ... (保持不變) ... */
+.sidebar-logo {
+  height: 60px; 
+  width: auto;
+}
+
+.offcanvas-body .nav-link {
+  color: #343a40; 
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem; 
+  margin-bottom: 0.5rem; 
+  display: flex; 
+  align-items: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.offcanvas-body .nav-link i {
+  width: 28px; 
+  font-size: 1.2rem;
+  margin-right: 0.75rem; 
+  color: #6c757d; 
+  transition: color 0.2s ease-in-out;
+}
+
+.offcanvas-body .nav-link:not(.active):hover {
+  background-color: #e9ecef; 
+}
+
+.offcanvas-body .nav-link.active {
+  background-color: #09A2C8; /* [品牌色] */
+  color: #ffffff; 
+  font-weight: 600;
+}
+
+.offcanvas-body .nav-link.active i {
+  color: #ffffff; 
+}
+
+.offcanvas-body {
+  .sub-nav-link {
+    font-size: 0.95rem;
+    font-weight: 400;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 3.5rem; 
+  }
+  .sub-nav-link.active {
+    font-weight: 600; 
+    background-color: transparent; 
+    color: #09A2C8; 
+  }
+
+  /* [修正] 更新箭頭旋轉的選擇器 */
+  .nav-link .bi-chevron-down {
+    transition: transform 0.2s ease-in-out;
+    font-size: 0.8rem;
+  }
+  .nav-link[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
+  }
+}

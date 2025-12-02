@@ -1,0 +1,64 @@
+<div [class]="'container-fluid'" [style]="'border: 20px solid #f8f9fa; padding: 0'">
+<div [class]="'team-header-block text-center py-5'">
+  <div [class]="'container'">
+    <h2>Meet the Team</h2> 
+    <hr [class]="'title-accent-line'">
+  </div>
+</div>
+
+<div [class]="'members-column py-5'">
+  <div [class]="'container'">
+    <div [class]="'row'">
+      <div [class]="'col-md-12'">
+        <h4>博士班</h4> 
+        <hr>
+      </div>
+      <div [class]="'col-md-4 mb-4'">
+          
+          <div [class]="'card card-team'">
+            
+            <img ngSrc="assets/images/WangYuan.jpeg" 
+                 [class]="'card-img-top card-img-fixed'" 
+                 width="300" 
+                 height="300">
+                 
+            <div [class]="'card-body'">
+              <h5 [class]="'card-title'">王元</h5>
+              
+              <p [class]="'card-text research-interest'">
+                <strong>Research interests:</strong> 影像識別、深度學習、機器學習、智慧製造、AI Agent、網頁設計、資料庫管理
+              </p>
+            </div>
+          </div>
+
+        </div>
+      <div [class]="'col-md-12'">
+        <h4>碩士班</h4> 
+        <hr>
+      </div>
+      @for (member of teamMembers(); track member.id) {
+        
+        <div [class]="'col-md-4 mb-4'">
+          
+          <div [class]="'card card-team h-100'">
+            
+            <img ngSrc="{{member.image}}" 
+                 [class]="'card-img-top card-img-fixed'" 
+                 width="300" 
+                 height="300">
+                 
+            <div [class]="'card-body'">
+              <h5 [class]="'card-title'">{{member.name}}</h5>
+              
+              <p [class]="'card-text research-interest'">
+                <strong>Research interests:</strong> {{member.field}}
+              </p>
+            </div>
+          </div>
+
+        </div>
+      }
+    </div>
+  </div>
+</div>
+</div>
