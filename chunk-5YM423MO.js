@@ -1,0 +1,1 @@
+import{Cb as c,Na as n,ib as o,jb as s}from"./chunk-U3VL3DPV.js";var a=["class","component"],m=class e{static \u0275fac=function(t){return new(t||e)};static \u0275cmp=n({type:e,selectors:[["nstc",8,"component"]],attrs:a,decls:2,vars:0,template:function(t,i){t&1&&(o(0,"p"),c(1,"nstc.component works!"),s())},encapsulation:2})};export{m as NstcComponent};
